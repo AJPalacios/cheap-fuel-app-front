@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import mapboxgl from 'mapbox-gl'
 
-const MapboxDirections = require('@mapbox/mapbox-gl-directions')
+import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions'
 
 mapboxgl.accessToken = "pk.eyJ1IjoiYWRuY29kZSIsImEiOiJjam16bHJiYzEwMjI5M3Btemh5d2N3NHkyIn0.eqcpU52HvvJ8YxgGz55dpA"
 
@@ -24,7 +24,7 @@ class MapComponent extends Component{
         })
 
         var marker = new mapboxgl.Marker()
-	      .setLngLat([pos.coords.longitude,pos.coords.longitude])
+	      .setLngLat([pos.coords.longitude,pos.coords.latitude])
 	      .addTo(map)
 
 
