@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import 'toastr/build/toastr.min.css'
 import 'semantic-ui-css/semantic.min.css'
 import 'mapbox-gl/dist/mapbox-gl.css'
+import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
 // Router
 
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter, withRouter} from 'react-router-dom'
 
 const WithRouter = () =><BrowserRouter><App></App></BrowserRouter>
 

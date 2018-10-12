@@ -1,13 +1,22 @@
 import React, { Component } from 'react'
 import mapboxgl from 'mapbox-gl'
 
-const MapboxDirections = require('@mapbox/mapbox-gl-directions')
+import NavBar from './Nav'
+
+import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.js'
 
 mapboxgl.accessToken = "pk.eyJ1IjoiYWRuY29kZSIsImEiOiJjam16bHJiYzEwMjI5M3Btemh5d2N3NHkyIn0.eqcpU52HvvJ8YxgGz55dpA"
 
 class MapComponent extends Component{
 
+  state={
+    user:{}
+  }
+
   componentWillMount(){
+    const user = JSON.parse(localStorage.getItem('my-fuel-user'))
+    if(!user) return this.props.history.push('/login')
+    this.setState({user})
     this.drawMap()
   }
 
@@ -20,11 +29,11 @@ class MapComponent extends Component{
           container: 'map',
           zoom:15,
           center: [pos.coords.longitude,pos.coords.latitude],
-          style: 'mapbox://styles/adncode/cjn3sh9sm18ep2sp8bq8uzum3'
+          style: 'mapbox://styles/adncode/cjn5q8pec0fp42smn7970yajs'
         })
 
         var marker = new mapboxgl.Marker()
-	      .setLngLat([pos.coords.longitude,pos.coords.longitude])
+	      .setLngLat([pos.coords.longitude,pos.coords.latitude])
 	      .addTo(map)
 
 
@@ -34,11 +43,44 @@ class MapComponent extends Component{
       map.addControl(new MapboxDirections({
         accessToken: mapboxgl.accessToken
       }),'top-left')
-	
-    map.on('click', (e)=>{
+      
+      var popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+    });
+
+      map.on('mouseenter','gas-layer',(e)=>{
+        let features = map.queryRenderedFeatures(e.point,{
+          layers: ['gas-layer']
+        })
+
+        var feature = features[0]
+        console.log(feature)
+
+        map.getCanvas().style.cursor = 'pointer'
+        var coordinates = feature.geometry.coordinates.slice()
+        var description = feature.properties.name
+
+        console.log(coordinates, description)
+
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        popup.setLngLat(coordinates)
+            .setHTML(description)
+            .addTo(map);
+
+      })
+      map.on('mouseleave', 'places', function() {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+    });
+
+   /* map.on('click', (e)=>{
     
       let features = map.queryRenderedFeatures(e.point,{
-        layers: ['gas layer']
+        layers: ['gas-layer']
       })
     
       
@@ -49,10 +91,10 @@ class MapComponent extends Component{
       .setHTML('<h3>' + feature.properties.name + '</h1><p>'+feature.properties.address_street+'</p>')
       .setLngLat(feature.geometry.coordinates)
       .addTo(map)
-    })
+    })*/
 
       // fin del current position 
-      })
+      },(msg)=>{alert('Please enable your gps position')},{maximumAge:600000, timeout:5000,enableHighAccuracy: true})
     }
   }
   
@@ -60,6 +102,7 @@ class MapComponent extends Component{
   render(){
     return(
         <div>
+          <NavBar/>
           <div className='Map' id="map"></div>
         </div>
     );
