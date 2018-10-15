@@ -9,6 +9,7 @@ mapboxgl.accessToken = "pk.eyJ1IjoiYWRuY29kZSIsImEiOiJjam16bHJiYzEwMjI5M3Btemh5d
 
 class MapComponent extends Component{
 
+  
   state={
     user:{}
   }
@@ -29,7 +30,7 @@ class MapComponent extends Component{
           container: 'map',
           zoom:15,
           center: [pos.coords.longitude,pos.coords.latitude],
-          style: 'mapbox://styles/adncode/cjn5q8pec0fp42smn7970yajs'
+          style: 'mapbox://styles/adncode/cjn7kawvq24wx2smn41yav5vs'
         })
 
         var marker = new mapboxgl.Marker()
@@ -55,11 +56,14 @@ class MapComponent extends Component{
         })
 
         var feature = features[0]
-        console.log(feature)
+        console.log(feature.properties.address_street)
 
         map.getCanvas().style.cursor = 'pointer'
         var coordinates = feature.geometry.coordinates.slice()
         var description = feature.properties.name
+        var address = feature.properties.address_street
+
+        
 
         console.log(coordinates, description)
 
@@ -67,12 +71,15 @@ class MapComponent extends Component{
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
 
+        let template = `<h3>${description}</h3> <br>
+                        <p>${address}</p><br>`
+
         popup.setLngLat(coordinates)
-            .setHTML(description)
+            .setHTML(template)
             .addTo(map);
 
       })
-      map.on('mouseleave', 'places', function() {
+      map.on('mouseleave', 'gas-layer', function() {
         map.getCanvas().style.cursor = '';
         popup.remove();
     });
