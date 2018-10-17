@@ -31,7 +31,7 @@ class SignUp extends Component{
 
   createUser = (e)=>{
 
-    const url = 'https://localhost:3000/auth/signup'
+    const url = 'https://final-project3.herokuapp.com/auth/signup'
 
     e.preventDefault()
     const {signup} = this.state

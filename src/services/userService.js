@@ -3,7 +3,7 @@ import axios from 'axios'
 import mapboxgl from 'mapbox-gl'
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.js'
 
-const url = "http://localhost:3000/stations/premium/"
+
 
 
 export const  saveMoneyPremium = ()=>{
@@ -15,7 +15,7 @@ export const  saveMoneyPremium = ()=>{
       var longitude = pos.coords.longitude
       var latitude = pos.coords.latitude
       console.log(latitude)
-      const url = 'http://localhost:3000/near-stations/stations/premium/'
+      const url = 'https://final-project3.herokuapp.com/near-stations/stations/premium/'
       
       return axios.get(url,{
         params:{
@@ -123,7 +123,7 @@ export const  saveMoneyPremium = ()=>{
         var longitude = pos.coords.longitude
         var latitude = pos.coords.latitude
         console.log(latitude)
-        const url = 'http://localhost:3000/near-stations/stations/'
+        const url = 'https://final-project3.herokuapp.com/near-stations/stations/'
         
         return axios.get(url,{
           params:{

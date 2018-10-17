@@ -10,10 +10,6 @@ class UserMenu extends Component{
   }
 
 
-
-  
-
-
   render(){
     return(       
         <div>
