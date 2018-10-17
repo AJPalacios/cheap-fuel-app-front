@@ -4,7 +4,7 @@ import Map from '../Map'
 import UserMenu from '../UserMenu'
 
 
-import {saveMoney} from '../../services/userService'
+//import {saveMoney} from '../../services/userService'
 
 
 

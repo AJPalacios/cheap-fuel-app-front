@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import mapboxgl from 'mapbox-gl'
-
+import {withRouter} from 'react-router-dom'
 import NavBar from './Nav'
 
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.js'
@@ -128,4 +128,4 @@ class MapComponent extends Component{
   }
 }
 
-export default MapComponent
+export default withRouter(MapComponent)

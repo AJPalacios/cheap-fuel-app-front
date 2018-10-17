@@ -21,7 +21,6 @@ class Login extends Component {
       console.log(res)
       toastr.success('Iniciaste sesión correctamente')
       localStorage.setItem('my-fuel-user', JSON.stringify(res.data.user))
-      localStorage.setItem('token', res.data.token)
       this.setState({loading:false})
       const profile = this.props.history
       profile.push('/profile')
