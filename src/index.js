@@ -3,8 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import 'toastr/build/toastr.min.css'
+import 'semantic-ui-css/semantic.min.css'
+import 'mapbox-gl/dist/mapbox-gl.css'
+import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
+// Router
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import {BrowserRouter, withRouter} from 'react-router-dom'
+
+const WithRouter = () =><BrowserRouter><App></App></BrowserRouter>
+
+ReactDOM.render( <WithRouter/> , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

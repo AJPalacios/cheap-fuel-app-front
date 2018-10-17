@@ -30,3 +30,30 @@
     transform: rotate(360deg);
   }
 }
+
+.Map{
+  width: 100%;
+  height: 500px;
+}
+
+.User-actions{
+
+  margin: 30px;
+
+}
+.Footer{
+  width: 100%;
+  background: #282c34;
+  color: white;
+  height: 240px;
+}
+.ui.grid{
+  margin: 0 !important;
+}
+.ui.menu{
+  background: #282c34 !important;
+}
+a{
+  color: white !important;
+  font-size: 1.2em;
+}
