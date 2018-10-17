@@ -4,8 +4,6 @@ import mapboxgl from 'mapbox-gl'
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.js'
 
 
-
-
 export const  saveMoneyPremium = ()=>{
   
   console.log("click!!!!!!!")
@@ -38,6 +36,11 @@ export const  saveMoneyPremium = ()=>{
             style: 'mapbox://styles/adncode/cjn7kawvq24wx2smn41yav5vs'
           })
 
+          var marker = new mapboxgl.Marker()
+          .setLngLat([pos.coords.longitude,pos.coords.latitude])
+          .addTo(map)
+
+          
           map.addControl(new mapboxgl.NavigationControl())
           map.addControl(new MapboxDirections({
             accessToken: mapboxgl.accessToken
@@ -114,7 +117,12 @@ export const  saveMoneyPremium = ()=>{
   }
 
 
-  export const   saveMoneyMagna = ()=>{
+
+
+
+
+
+export const   saveMoneyMagna = ()=>{
   
     console.log("click!!!!!!!")
     if (navigator.geolocation) {
@@ -145,12 +153,17 @@ export const  saveMoneyPremium = ()=>{
               center: [longitude,latitude],
               style: 'mapbox://styles/adncode/cjn7kawvq24wx2smn41yav5vs'
             })
-  
+            
+            var marker = new mapboxgl.Marker()
+            .setLngLat([pos.coords.longitude,pos.coords.latitude])
+            .addTo(map)
+            
             map.addControl(new mapboxgl.NavigationControl())
             map.addControl(new MapboxDirections({
               accessToken: mapboxgl.accessToken
             }),'top-left')
-  
+
+
             map.flyTo({
               center: [
                 data.data[0].geometry.coordinates[0],

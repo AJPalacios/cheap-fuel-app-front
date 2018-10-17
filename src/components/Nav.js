@@ -21,14 +21,7 @@ class NavBar extends Component{
       <div>
       <Menu stackable>
         <Menu.Item>
-          <img src='https://react.semantic-ui.com/logo.png'/>
-        </Menu.Item>
-        <Menu.Item
-          name='mis consumos'
-          active={activeItem === 'mis consumos'}
-          onClick={this.handleItemClick}
-        >
-          <Link to='/mis-consumos'>Mis Consumos</Link>
+          <img src='https://res.cloudinary.com/procode/image/upload/v1539804125/fuel_zdlrpr.png'/>
         </Menu.Item>
         <Menu.Item
           name='log-out'
