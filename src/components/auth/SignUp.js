@@ -31,7 +31,7 @@ class SignUp extends Component{
 
   createUser = (e)=>{
 
-    const url = 'http://localhost:3000/signup'
+    const url = 'https://localhost:3000/auth/signup'
 
     e.preventDefault()
     const {signup} = this.state
@@ -39,10 +39,12 @@ class SignUp extends Component{
       return toastr.error('Las contraseñas no coinciden')
     }
     
-    axios.post('http://localhost:3000/signup', signup)
+    axios.post(url, signup)
     .then(user=>{
       console.log(user)
       toastr.success('Registrado correctamente')
+      const profile = this.props.history
+      profile.push('/')
     })
     .catch(e=>{
       console.log(e)

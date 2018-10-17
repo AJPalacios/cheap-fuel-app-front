@@ -3,7 +3,7 @@ import { Button, Input, Form } from 'semantic-ui-react'
 import axios from 'axios'
 import toastr from 'toastr'
 
-const login_url = 'http://localhost:3000/login'
+const login_url = 'https://localhost:3000/auth/login'
 
 class Login extends Component {
 

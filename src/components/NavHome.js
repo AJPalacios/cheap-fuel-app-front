@@ -1,41 +1,36 @@
 import React,{Component} from 'react'
-import {withRouter,Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import {Menu} from 'semantic-ui-react'
+import { runInThisContext } from 'vm';
 
-
-class NavBar extends Component{
+class NavHome extends Component{
 
   state={}
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-  logOut = (e)=>{
-    e.preventDefault()
-    localStorage.removeItem('my-fuel-user')
-    return this.props.history.push('/login')
-    
-  }
-
+  
   render(){
     const { activeItem } = this.state
     return(
       <div>
+        
+          
       <Menu stackable>
         <Menu.Item>
           <img src='https://react.semantic-ui.com/logo.png'/>
         </Menu.Item>
         <Menu.Item
-          name='mis consumos'
-          active={activeItem === 'mis consumos'}
+          name='iniciar sesión'
+          active={activeItem === 'iniciar sesión'}
           onClick={this.handleItemClick}
         >
-          <Link to='/mis-consumos'>Mis Consumos</Link>
+          <NavLink  to='/login'>Iniciar Sesión</NavLink>
         </Menu.Item>
         <Menu.Item
-          name='log-out'
-          active={activeItem === 'log-out'}
-          onClick={this.logOut}
+          name='crear cuenta'
+          active={activeItem === 'crear cuenta'}
         >
-          Cerrar Sesión
+          <NavLink to='/signup'>Crear Cuenta</NavLink>
         </Menu.Item>
       </Menu>
       </div>
@@ -44,4 +39,4 @@ class NavBar extends Component{
 
 }
 
-export default withRouter(NavBar)
+export default NavHome

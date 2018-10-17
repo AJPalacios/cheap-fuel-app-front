@@ -71,8 +71,20 @@ class MapComponent extends Component{
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
 
-        let template = `<h3>${description}</h3> <br>
-                        <p>${address}</p><br>`
+        let template = `
+        <div class="ui three column divided center aligned grid">
+          <div class="column">
+            <h4 class="ui header">${description}</h4>
+            <p><b>${address}</b></p>
+          </div>
+          <div class="column">
+            <h4 class="ui header">MAGNA</h4>
+            <h3><b>${feature.properties.gas_price_regular}</b></h3>
+          </div>
+          <div class="column">
+            <h4 class="ui header">PREMIUM</h4>
+            <h3><b>${feature.properties.gas_price_premium}</b></h3>
+          </div>`
 
         popup.setLngLat(coordinates)
             .setHTML(template)

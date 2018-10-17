@@ -2,6 +2,12 @@ import React, {Component} from 'react'
 
 import Map from '../Map'
 import UserMenu from '../UserMenu'
+
+
+import {saveMoney} from '../../services/userService'
+
+
+
 class Profile extends Component{
 
 

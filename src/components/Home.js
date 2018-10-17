@@ -1,15 +1,17 @@
 import React, {Component} from 'react'
-
+import CoverMap from './CoverMap'
+import NavHome from './NavHome'
+import Footer from './Footer'
 
 class Home extends Component{
 
   render(){
     return(
-      <div className="App">
-        <header className="App-header">
-          <h1>Este es mi cover page de inicio</h1>
-          <a href='/login' className='ui green button'>Iniciar Sesión</a>
-          <a href='/signup' className='ui blue button'>Crear Cuenta</a>
+      <div className="">
+        <header className="">
+          <NavHome></NavHome>
+          <CoverMap></CoverMap>
+          <Footer></Footer>
         </header>
       </div>
     );
